@@ -1,12 +1,12 @@
 from dataclasses import fields
 from django.forms import ModelForm
-from .models import Register
+from .models import Account
 from django import forms
 
 
-class RegisterForm(ModelForm):
+class AccountForm(ModelForm):
     class Meta:
-        model = Register
+        model = Account
         fields = "__all__"
 
         labels = {

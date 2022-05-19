@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="author" content="codexcoder">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Meta tags for Social Media(Better SEO) -->
+    <!-- <meta property="og:title" content=""> -->
+    <!-- <meta property="og:type" content=""> -->
+    <!-- <meta property="og:url" content=""> -->
+    <!-- <meta property="og:image" content=""> -->
+
+    <!-- site favicon -->
+    <link rel="icon" type="image/png" href="{%static 'assets/images/favicon.png' %}">
+    <!-- ====== All css file ========= -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css//icofont.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/lightcase.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/users-header.css' %}">
+
+
+    <title>NFT MARKETPLACE</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <h3 class="header2">Users Management System</h3>
+    </header>
+   <div class="container mt-3" style="width: 400px;">
+     <div class="mess">
+        {%for message in messages %}
+        <p class="alert alert-success mt-3">{{message}}</p>
+        {% endfor %}
+     </div>
+
+     {% if sel_account %}
+     <form class="form" method="POST" action="{% url 'update_user' sel_account.id %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="exampleInputEmail1">Username</label>
+        <input type="text" class="form-control" value="{{sel_account.username}}" name="username">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="email" class="form-control" value="{{sel_account.address}}" name="address" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" value="{{sel_account.password}}" name="password" id="exampleInputPassword1">
+      </div>
+      <br>
+      <div class="but">
+      <button type="submit" class="btn btn-success">Update</button>
+      </div>
+    </form>
+     {% else %}
+    <form class="form" method="POST" action="{% url 'add_user' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="exampleInputEmail1">Username</label>
+        <input type="text" class="form-control" name="username">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="email" class="form-control" name="address" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+      </div>
+      <br>
+      <div class="but">
+      <button type="submit" class="btn btn-success">Save</button>
+      </div>
+    </form>
+    {% endif %}
+  </div>
+
+ <center>
+  <div class="mt-5">
+    <table  class="table table-dark" style="width:90%" >
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Username</th>
+          <th scope="col">Email</th>
+          <th scope="col">Password</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in user_list %}
+        <tr>
+          <th>{{forloop.counter}}</th>
+          <td>{{i.username}}</td>
+          <td>{{i.address}}</td>
+          <td>{{i.password}}</td>
+          <td> <div><a href="{% url 'edit_user' i.id %}" class="btn btn-warning">EDIT</a>
+             </div></td>
+          <td><a href="{% url 'delete_user' i.id %}" class="btn btn-danger">DELETE</a></td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+</center>
+
+    
+
+
+    
+
+   
+</body>
+
+</html>

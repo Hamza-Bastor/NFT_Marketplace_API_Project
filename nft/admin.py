@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from nft.models import Product, Collection, Register
+from nft.models import Product, Collection, Account
 
 
 @admin.register(Product)
@@ -16,7 +16,7 @@ class CollectionAdmin(admin.ModelAdmin):
     list_display = ('name', 'collection_url')
 
 
-@admin.register(Register)
-class RegisterAdmin(admin.ModelAdmin):
+@admin.register(Account)
+class AccountAdmin(admin.ModelAdmin):
 
     list_display = ('username', 'address', 'password')

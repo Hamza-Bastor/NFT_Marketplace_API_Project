@@ -1,7 +1,7 @@
 from dataclasses import fields
 from pyexpat import model
 from rest_framework import serializers
-from nft.models import Register, Collection, Product
+from nft.models import Account, Collection, Product
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -18,8 +18,8 @@ class CollectionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class RegisterSerializer(serializers.ModelSerializer):
+class AccountSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Register
+        model = Account
         fields = '__all__'

@@ -36,7 +36,7 @@ class Collection(models.Model):
     collection_url = models.URLField()
 
 
-class Register(models.Model):
+class Account(models.Model):
     username = models.CharField(max_length=20)
     address = models.EmailField()
     password = models.CharField(max_length=30)
