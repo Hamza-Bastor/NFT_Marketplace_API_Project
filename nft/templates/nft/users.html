@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/lightcase.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/users-header.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/colors2.css' %}">
 
 
     <title>NFT MARKETPLACE</title>
@@ -41,7 +41,7 @@
         <p class="alert alert-success mt-3">{{message}}</p>
         {% endfor %}
      </div>
-
+<br><br><br>
      {% if sel_account %}
      <form class="form" method="POST" action="{% url 'update_user' sel_account.id %}">
       {% csrf_token %}

@@ -1,0 +1,231 @@
+body{
+    background-color: black;
+}
+
+
+
+.header{
+    background-color: #000000;
+    
+}
+
+
+.header2 {
+    color: #9CFB00;
+    margin-top: 20px;
+    text-align: center;
+    
+}
+
+
+
+.form {
+    margin-top: 30px;
+    color: #9CFB00;
+
+}
+
+.but {
+    text-align: center;
+}
+
+.mess {
+    padding-top: 50px;
+}
+
+
+
+table.table-dark{
+    border-color: #9CFB00;
+    color: #9CFB00;
+}
+
+.account-img{
+    filter: saturate(100%) invert(76%) sepia(57%) saturate(716%) hue-rotate(29deg) brightness(104%) contrast(103%);
+}
+
+
+
+
+
+.header__nav-link{
+    color: #9CFB00;
+}
+
+.header .drop-down-item.active, .header .drop-down-item:hover {
+    transform: translateX(5px);
+    color: #9CFB00 !important;
+}
+
+.header__nav-link svg{
+    fill: #9CFB00;
+}
+
+.header__nav-link svg:hover{
+    fill: white;
+  }
+
+
+.header__action--profile .dropdown-toggle span:nth-of-type(1){
+    background: #9CFB00;
+}
+
+.icofont-wallet{
+    filter: saturate(100%) invert(76%) sepia(57%) saturate(716%) hue-rotate(29deg) brightness(104%) contrast(103%);
+}
+
+a{
+    color: #9CFB00;
+}
+a:hover {
+    color: white;
+  }
+
+a:active {
+    color: #9CFB00;
+  }
+.banner-image{
+    filter: saturate(100%) invert(76%) sepia(57%) saturate(716%) hue-rotate(29deg) brightness(104%) contrast(103%);
+}
+
+.theme-color{
+    color: #9CFB00;
+}
+
+.default-btn{
+    background: #9CFB00;
+}
+
+.live-icon{
+    background-color: #9CFB00;
+}
+
+.live-icon svg{
+    fill:#9CFB00;
+}
+
+.banner-section{
+    background-color: #000000;
+}
+
+.section-header{
+    background-color: #000000;
+}
+
+
+
+.nft-item .nft-inner {
+    background-color: #000000;
+}
+
+.nft-item-bottom .nft-thumb .nft-countdown{
+    background-color: #000000;
+    color: #9CFB00;
+}
+
+.icofont-arrow-left{
+    color: #9CFB00;
+}
+
+
+.icofont-arrow-right{
+    color: #9CFB00;
+}
+
+.seller-icon{
+    background-color: #9CFB00;
+}
+
+
+
+.seller-item .seller-inner{
+    background-color: #000000;
+}
+
+
+.follow-part .btn-follow.follow-state{
+    background-color: #9CFB00;
+}
+
+.follow-part .btn-follow.follow-state:hover{
+    background-color: white;
+    color: #9CFB00;
+}
+
+.seller-section .section-header .header-content .seller-filter-btns select{
+    background-color: #9CFB00;
+    color:#000000;
+}
+
+.seller-section .section-header .header-content .seller-filter-btns .days-select{
+    background-color:#9CFB00;
+    color:#000000;
+}
+
+.view-all-btn{
+    color: #9CFB00;
+}
+
+
+.header-title span i{
+    color: #9CFB00;
+}
+
+
+.assets-section .section-header .header-content .asset-filter-list .asset-filter-btn.is-checked{
+    color: #9CFB00;
+}
+
+footer{
+    background-color: #000000;
+}
+
+.footer-top form button{
+    background: #9CFB00;
+    color: #000000;
+}
+
+.footer-top form button:hover{
+    color:#9CFB00;
+    background: #000000;
+}
+
+.footer-top .social-list .social-link a{
+    background-color: #9CFB00;
+}
+
+.footer-top .social-list .social-link a:hover{
+    background-color: #9CFB00;
+    color: #000000;
+}
+
+
+li{
+    border-color: #9CFB00;
+}
+
+
+
+.page-header-section.style-1{
+    background-color: #000000;
+}
+
+h1, h2, h3, h4, h5, h6{
+    color: #9CFB00;
+}
+
+.page-header-section.style-1 .page-header-content .page-header-inner .breadcrumb li a{
+    color: #9CFB00;
+}
+
+.page-header-section.style-1 .page-header-content .page-header-inner .breadcrumb li{
+    color: #9CFB00;
+}
+
+
+.account-form .form-group button{
+    color: #000000;
+    background-color: #9CFB00;
+}
+
+

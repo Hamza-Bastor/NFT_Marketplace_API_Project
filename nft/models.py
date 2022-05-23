@@ -1,4 +1,5 @@
 import collections
+from email.headerregistry import Address
 from pyexpat import model
 from django.db import models
 from django.contrib import admin

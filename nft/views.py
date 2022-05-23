@@ -1,16 +1,14 @@
-from email.headerregistry import Address
 from itertools import product
-from multiprocessing import context
 from django.shortcuts import redirect, render
 from django.http import HttpResponseRedirect
 from django.template import loader
 from rest_framework import viewsets
 from nft.models import Account, Collection, Product
 from nft.serializers import AccountSerializer, CollectionSerializer, ProductSerializer
-from .form import AccountForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from nft import form
+from .form import SignupForm, UserCreationForm
+
 
 # product page
 
@@ -81,6 +79,16 @@ def update_product(request, myid):
     messages.info(request, "PRODUCT UPDATED SUCCESSFULLY")
     return redirect(products)
 
+# user page
+
+
+def users(request):
+    user_list = Account.objects.all()
+    context = {
+        'user_list': user_list
+    }
+    return render(request, 'nft/users.html', context)
+
 # adding user
 
 
@@ -134,27 +142,29 @@ def update_user(request, myid):
     messages.info(request, "USER UPDATED SUCCESSFULLY")
     return redirect(users)
 
-# user page
 
-
-def users(request):
-    user_list = Account.objects.all()
-    context = {
-        'user_list': user_list
-    }
-    return render(request, 'nft/users.html', context)
+# home page
+def home(request):
+    return render(request, 'nft/home.html', {})
 
 
 # signup page
 def signup(request):
     if request.method == "POST":
-        form = AccountForm(request.POST)
+        form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/signup')
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password1")
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, "Registration successful!")
+                return redirect('home')
     else:
-        form = AccountForm
-    return render(request, 'nft/signup.html', {'form': form})
+        form = SignupForm()
+
+    return render(request, 'authenticate/signup.html', {'form': form})
 
 
 # signin page
@@ -165,12 +175,19 @@ def signin(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('signup')
+            return redirect('home')
         else:
             return redirect('signin')
 
     else:
-        return render(request, 'nft/signin.html', {})
+        return render(request, 'authenticate/signin.html', {})
+
+# sign out
+
+
+def signout(request):
+    logout(request)
+    return redirect('home')
 
 
 class ProductViewSet(viewsets.ModelViewSet):

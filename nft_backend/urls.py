@@ -27,9 +27,12 @@ router.registry.extend(nft_router.registry)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
-    path('signup/', views.signup),
-    path('signin/', views.signin),
+    path('', views.home, name="home"),
+    path('rest/', include(router.urls)),
+    path('signup/', views.signup, name="signup"),
+    path('signin/', views.signin, name="signin"),
+    path('signout/', views.signout, name="signout"),
+    path('users/', include('django.contrib.auth.urls')),
     path('users/', views.users),
     path('add_user', views.add_user, name="add_user"),
     path('delete_user/<int:myid>/', views.delete_user, name="delete_user"),
