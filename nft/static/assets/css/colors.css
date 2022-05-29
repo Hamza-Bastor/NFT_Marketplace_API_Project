@@ -2,7 +2,9 @@ body{
     background-color: #9CFB00;
 }
 
-
+.preloader .preloader-inner .preloader-icon{
+    background: white;
+}
 
 .header{
     background-color: #000000;
@@ -168,3 +170,4 @@ li{
 .mov{
     padding-left: 30px;
 }
+

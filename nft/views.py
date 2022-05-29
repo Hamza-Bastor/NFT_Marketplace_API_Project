@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponseRedirect
 from django.template import loader
 from rest_framework import viewsets
-from nft.models import Account, Collection, Product
+from nft.models import Account, Collection, Product, Nft
 from nft.serializers import AccountSerializer, CollectionSerializer, ProductSerializer
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -11,8 +11,6 @@ from .form import SignupForm, UserCreationForm
 
 
 # product page
-
-
 def products(request):
     product_list = Product.objects.all()
     context = {
@@ -20,9 +18,8 @@ def products(request):
     }
     return render(request, 'nft/products.html', context)
 
+
 # adding product
-
-
 def add_product(request):
     if request.method == "POST":
         product_name = request.POST['product_name']
@@ -43,18 +40,16 @@ def add_product(request):
     }
     return render(request, 'nft/products.html', context)
 
+
 # delete product
-
-
 def delete_product(request, myid):
     product = Product.objects.get(id=myid)
     product.delete()
     messages.info(request, "PRODUCT DELETED SUCCESSFULLY")
     return redirect(products)
 
+
 # edit product
-
-
 def edit_product(request, myid):
     sel_product = Product.objects.get(id=myid)
     product_list = Product.objects.all()
@@ -64,9 +59,8 @@ def edit_product(request, myid):
     }
     return render(request, 'nft/products.html', context)
 
+
 # update product
-
-
 def update_product(request, myid):
     product = Product.objects.get(id=myid)
     product.product_name = request.POST['product_name']
@@ -79,9 +73,8 @@ def update_product(request, myid):
     messages.info(request, "PRODUCT UPDATED SUCCESSFULLY")
     return redirect(products)
 
+
 # user page
-
-
 def users(request):
     user_list = Account.objects.all()
     context = {
@@ -89,9 +82,8 @@ def users(request):
     }
     return render(request, 'nft/users.html', context)
 
+
 # adding user
-
-
 def add_user(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -109,18 +101,16 @@ def add_user(request):
     }
     return render(request, 'nft/users.html', context)
 
+
 # delete user
-
-
 def delete_user(request, myid):
     account = Account.objects.get(id=myid)
     account.delete()
     messages.info(request, "USER DELETED SUCCESSFULLY")
     return redirect(users)
 
+
 # edit user
-
-
 def edit_user(request, myid):
     sel_account = Account.objects.get(id=myid)
     user_list = Account.objects.all()
@@ -130,9 +120,8 @@ def edit_user(request, myid):
     }
     return render(request, 'nft/users.html', context)
 
+
 # update user
-
-
 def update_user(request, myid):
     account = Account.objects.get(id=myid)
     account.username = request.POST['username']
@@ -175,6 +164,7 @@ def signin(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+            messages.success(request, "Welcome Back!")
             return redirect('home')
         else:
             return redirect('signin')
@@ -182,12 +172,34 @@ def signin(request):
     else:
         return render(request, 'authenticate/signin.html', {})
 
+
 # sign out
-
-
 def signout(request):
     logout(request)
     return redirect('home')
+
+
+# profil
+def profil(request):
+    return render(request, 'nft/profils.html', {})
+
+
+# nft page
+def nfts(request):
+    return render(request, 'nft/nfts.html', {})
+
+
+# add nft
+def add_nft(request):
+    if request.method == "POST":
+        photo = request.POST['photo']
+        name = request.POST['name']
+        description = request.POST['description']
+        nft = Nft(photo=photo, name=name,
+                  description=description)
+        nft.save()
+        messages.info(request, "NFT ADDED SUCCESSFULLY")
+    return render(request, 'nft/nfts.html', {})
 
 
 class ProductViewSet(viewsets.ModelViewSet):

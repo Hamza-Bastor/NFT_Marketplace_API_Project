@@ -228,4 +228,63 @@ h1, h2, h3, h4, h5, h6{
     background-color: #9CFB00;
 }
 
+.account-wrapper{
+    background: #9CFB00;
+}
+
+
+
+.create-nft{
+    border: 2px solid #9CFB00;
+    background: #000000;
+    margin-left: 180px;
+    margin-right: 180px;
+}
+.create-nft .create-nft-form input, .create-nft .create-nft-form select, .create-nft .create-nft-form textarea{
+    background: #000000;
+    border-color: #9CFB00;
+    color: #9CFB00;
+}
+
+.create-nft .create-nft-form input, .create-nft .create-nft-form select, .create-nft .create-nft-form textarea:active{
+    color: #9CFB00;
+}
+
+.create-nft .upload-item{
+    border: 2px dashed #9CFB00;
+    background: #202124;
+}
+
+.create-nft .upload-item:hover{
+    background: black;
+}
+
+.create-nft .upload-item .custom-upload {
+    background: #9CFB00;
+    color: black;
+    
+}
+
+.create-nft .upload-item .custom-upload:hover{
+    background: #000000;
+    color: #9CFB00;
+    border: 2px solid #9CFB00;
+}
+
+.form-floating>.form-select~label{
+    color: #9CFB00;
+}
+
+
+.create-nft .submit-btn-field button{
+    background: #9CFB00;
+    color: #000000;
+}
+
+.create-nft .submit-btn-field button:hover{
+    background: #000000;
+    color: #9CFB00;
+    border: 2px solid #9CFB00;
+}
+
 

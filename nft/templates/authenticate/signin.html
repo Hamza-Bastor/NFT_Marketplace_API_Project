@@ -16,7 +16,7 @@
     <!-- <meta property="og:image" content=""> -->
 
     <!-- site favicon -->
-    <link rel="icon" type="image/png" href="{%static 'assets/images/favicon.png'%}">
+    <link rel="icon" type="image/png" href="{%static 'assets/images/favicon.ico' %}">
 
     <!-- ====== All css file ========= -->
     <link rel="stylesheet" href="{%static 'assets/css/bootstrap.min.css'%}">
@@ -25,36 +25,26 @@
     <link rel="stylesheet" href="{%static 'assets/css/lightcase.css'%}">
     <link rel="stylesheet" href="{%static 'assets/css/swiper-bundle.min.css'%}">
     <link rel="stylesheet" href="{%static 'assets/css/style.min.css'%}">
-
+    <link rel="stylesheet" href="{% static 'assets/css/colors2.css' %}">
 
     <!-- site title -->
     <title>NFT MARKETPLACE</title>
 </head>
 
 <body>
-    <!-- preloader start here -->
-    <div class="preloader">
-        <div class="preloader-inner">
-            <div class="preloader-icon">
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </div>
-    <!-- preloader ending here -->
-
+    
     <!-- ===============// header section start here \\================= -->
     <header class="header">
         <div class="container-fluid">
             <div class="header__content">
                 <div class="header__logo">
-                    <a href="index.html">
-                        <img src="{%static 'assets/images/logo/logo.png'%}" alt="logo">
+                    <a href="/">
+                        <img src="{%static 'assets/images/logo/logo1.png'%}" alt="logo">
                     </a>
                 </div>
 
                 <form action="#" class="header__search">
-                    <input type="text" placeholder="Search items, collections, and creators">
+                    <input type="text" placeholder="Search...">
                     <button type="button"><i class="icofont-search-2"></i></button>
                     <button type="button" class="close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path
@@ -64,16 +54,8 @@
                 <div class="header__menu ms-auto">
                     <ul class="header__nav mb-0">
                         <li class="header__nav-item">
-                            <a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown"
+                            <a class="header__nav-link" href="/" role="button"
                                 aria-haspopup="true" aria-expanded="false" data-bs-offset="0,10">Home</a>
-
-                            <ul class="dropdown-menu header__nav-menu">
-                                <li><a class="drop-down-item" href="index.html">Home style 1</a></li>
-                                <li><a class="drop-down-item" href="index-2.html">Home style 2</a></li>
-                                <li><a class="drop-down-item" href="index-3.html">Home style 3</a></li>
-
-
-                            </ul>
                         </li>
                         <li class="header__nav-item">
                             <a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown"
@@ -87,34 +69,6 @@
                         </li>
                         <li class="header__nav-item">
                             <a href="activity.html" class="header__nav-link">Activity</a>
-                        </li>
-                        <li class="header__nav-item">
-                            <a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false" data-bs-offset="0,10">Blog</a>
-
-                            <ul class="dropdown-menu header__nav-menu">
-                                <li><a class="drop-down-item" href="blog.html">Blog style 1</a></li>
-                                <li><a class="drop-down-item" href="blog-2.html">Blog style 2</a></li>
-                                <li><a class="drop-down-item" href="blog-3.html">Blog style 3</a></li>
-                                <li><a class="drop-down-item" href="blog-single.html">Blog Single </a></li>
-                                <li><a class="drop-down-item" href="blog-single-2.html">Blog Single 2</a></li>
-                            </ul>
-                        </li>
-                        <li class="header__nav-item">
-                            <a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false" data-bs-offset="0,10">Pages</a>
-
-                            <ul class="dropdown-menu header__nav-menu">
-                                <li><a class="drop-down-item" href="item-details.html">NFT Details</a></li>
-                                <li><a class="drop-down-item" href="all-authors.html">ALL Authors</a></li>
-                                <li><a class="drop-down-item" href="all-authors-2.html">ALL Authors 2</a></li>
-                                <li><a class="drop-down-item" href="author.html">Author Profile</a></li>
-
-                                <li><a class="drop-down-item" href="wallet.html">Wallet Connect</a></li>
-                                <li><a class="drop-down-item" href="404.html">404</a></li>
-                                <li><a class="drop-down-item" href="forgot-pass.html">Forgot Password</a></li>
-
-                            </ul>
                         </li>
                         <li class="header__nav-item">
                             <a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown"
@@ -132,42 +86,33 @@
                     </ul>
                 </div>
 
+                {% if user.is_authenticated %}
+                <div class="mov">
+                    <a href="signout" >
+                        <span data-blast="bgColor"></span> <span
+                        >signout</span>
+                    </a>
+                </div>
+                {% else %}
+                <div class="header__action header__action--profile">
+                    <a href="/signup/" class="dropdown-toggle">
+                        <span data-blast="bgColor"><i class="icofont-user"></i></span> <span
+                            class="d-none d-md-inline">Signup</span>
+                    </a>
+                </div>
+                <div class="header__action header__action--profile">
+                    <a href="/signin/" class="dropdown-toggle">
+                        <span data-blast="bgColor"><i class="icofont-user"></i></span> <span
+                            class="d-none d-md-inline">Signin</span>
+                    </a>
+                </div>
+                {% endif %}
                 <div class="header__actions">
                     <div class="header__action header__action--search">
                         <button class="header__action-btn" type="button"><i class="icofont-search-1"></i></button>
                     </div>
 
-                    <div class="header__action header__action--profile">
-                        <div class="dropdown">
-                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false" data-bs-offset="-100,10">
-                                <span><i class="icofont-user"></i></span> <span class="d-none d-md-inline">Alex
-                                    Joe</span>
-                            </a>
 
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="author.html"><span class="me-1"><i
-                                                class="icofont-options"></i></span>
-                                        Profile</a></li>
-                                <li><a class="dropdown-item" href="activity.html"><span class="me-1"><i
-                                                class="icofont-lightning-ray"></i></span>
-                                        Activity</a></li>
-                                <li><a class="dropdown-item" href="signup.html"><span class="me-1"><i
-                                                class="icofont-space-shuttle"></i></span>
-                                        Sign
-                                        Up</a></li>
-                                <li><a class="dropdown-item" href="signin.html"><span class="me-1"><i
-                                                class="icofont-login"></i></span> Sign
-                                        In</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-
-                                <li><a class="dropdown-item" href="#"> Sign
-                                        Out <span class="ms-1"><i class="icofont-logout"></i></span></a></li>
-                            </ul>
-                        </div>
-                    </div>
                     <div class="wallet-btn">
                         <a href="wallet.html"><span><i class="icofont-wallet"></i></span> <span
                                 class="d-none d-md-inline">234.98ETH</span> </a>
@@ -196,7 +141,7 @@
                         <h2>Sign In Page </h2>
                     </div>
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li class="active">Sign In </li>
                     </ol>
                 </div>
@@ -354,7 +299,7 @@
         <div class="footer-bottom">
             <div class="container">
                 <p class="text-center py-4 mb-0">All rights reserved &copy; Enftomark || Design By: <a
-                        href="https://themeforest.net/user/codexcoder">codexcoder</a>
+                        href="https://themeforest.net/user/codexcoder">Hamza Bastor and Aymen Maski</a>
                 </p>
             </div>
         </div>

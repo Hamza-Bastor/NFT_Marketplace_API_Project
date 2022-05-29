@@ -34,10 +34,16 @@ class Product(models.Model):
 
 class Collection(models.Model):
     name = models.CharField(max_length=20)
-    collection_url = models.URLField()
+    description = models.TextField()
 
 
 class Account(models.Model):
     username = models.CharField(max_length=20)
     address = models.EmailField()
     password = models.CharField(max_length=30)
+
+
+class Nft(models.Model):
+    photo = models.ImageField(upload_to='')
+    name = models.CharField(max_length=20)
+    description = models.TextField()

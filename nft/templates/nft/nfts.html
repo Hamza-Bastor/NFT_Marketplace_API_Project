@@ -1,0 +1,401 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="author" content="codexcoder">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Meta tags for Social Media(Better SEO) -->
+    <!-- <meta property="og:title" content=""> -->
+    <!-- <meta property="og:type" content=""> -->
+    <!-- <meta property="og:url" content=""> -->
+    <!-- <meta property="og:image" content=""> -->
+
+    <!-- site favicon -->
+    <link rel="icon" type="image/png" href="{%static 'assets/images/favicon.ico' %}">
+    <!-- ====== All css file ========= -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css//icofont.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/lightcase.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/colors2.css' %}">
+    
+
+    <title>NFT MARKETPLACE</title>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container-fluid">
+        <div class="header__content">
+            <div class="header__logo">
+                <a href="/">
+                    <img src="{%static 'assets/images/logo/logo1.png' %}" alt="logo">
+                </a>
+            </div>
+
+            <form action="#" class="header__search">
+                <input type="text" placeholder="Search...">
+                <button type="button"><i class="icofont-search-2"></i></button>
+                <button type="button" class="close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M13.41,12l6.3-6.29a1,1,0,1,0-1.42-1.42L12,10.59,5.71,4.29A1,1,0,0,0,4.29,5.71L10.59,12l-6.3,6.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L12,13.41l6.29,6.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z" />
+                    </svg></button>
+            </form>
+            <div class="header__menu ms-auto">
+                <ul class="header__nav mb-0">
+                    <li class="header__nav-item">
+                        <a class="header__nav-link active" href="" role="button" 
+                            aria-haspopup="true" aria-expanded="false" data-bs-offset="0,10">Home</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" data-bs-offset="0,10">Explore</a>
+
+                        <ul class="dropdown-menu header__nav-menu">
+                            <li><a class="drop-down-item" href="explore.html">Explore NFT's</a></li>
+                            <li><a class="drop-down-item" href="auction.html">Auction Page</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="activity.html" class="header__nav-link">Activity</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" data-bs-offset="0,10"><svg
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M12,10a2,2,0,1,0,2,2A2,2,0,0,0,12,10ZM5,10a2,2,0,1,0,2,2A2,2,0,0,0,5,10Zm14,0a2,2,0,1,0,2,2A2,2,0,0,0,19,10Z" />
+                            </svg></a>
+
+                        <ul class="dropdown-menu header__nav-menu">
+                            <li><a class="drop-down-item" href="contact.html">Contact </a></li>
+                            <li><a class="drop-down-item" href="coming-soon.html">Coming soon</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            {% if user.is_authenticated %}
+            <div class="mov">
+                <a href="signout" >
+                    <span data-blast="bgColor"></span> <span
+                    >signout</span>
+                </a>
+            </div>
+            {% else %}
+            <div class="header__action header__action--profile">
+                <a href="signup" class="dropdown-toggle">
+                    <span data-blast="bgColor"><i class="icofont-user"></i></span> <span
+                        class="d-none d-md-inline">Signup</span>
+                </a>
+            </div>
+            <div class="header__action header__action--profile">
+                <a href="signin" class="dropdown-toggle">
+                    <span data-blast="bgColor"><i class="icofont-user"></i></span> <span
+                        class="d-none d-md-inline">Signin</span>
+                </a>
+            </div>
+            {% endif %}
+            <div class="header__actions">
+                <div class="header__action header__action--search">
+                    <button class="header__action-btn" type="button"><i class="icofont-search-1"></i></button>
+                </div>
+
+                
+                <div class="wallet-btn">
+                    <a href="signin"><span><i class="icofont-wallet" data-blast="color"></i></span> <span
+                            class="d-none d-md-inline">234.98ETH</span> </a>
+                </div>
+            </div>
+
+            <button class="menu-trigger header__btn" id="menu05">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</header>
+<!--form-->
+   <div class="container mt-3" style="width: 400px;">
+     <div class="mess">
+        {%for message in messages %}
+        <p class="alert alert-success mt-3">{{message}}</p>
+        {% endfor %}
+     </div>
+    </div>
+    <section class="page-header-section style-1">
+        <div class="container">
+            <div class="page-header-content">
+                <div class="page-header-inner">
+                    <div class="page-title">
+                        <h2>Create Your NFT </h2>
+                    </div>
+                    <ol class="breadcrumb">
+                        <li><a href="/">Home</a></li>
+                        <li class="active">Create NFT </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+     <div class="tab-content activity-content" id="pills-tabContent">
+            <div class="row">
+                <div class="col">
+                    <!-- create item -->
+                    <div class="create-nft py-5 px-4">
+                        <form class="create-nft-form">
+                            <!-- upload field -->
+                            <div class="upload-item mb-30">
+                                <p>PNG,JPG,JPEG,SVG,WEBP,Mp3 & Mp4
+                                    (Max-150mb)</p>
+                                <div class="custom-upload">
+                                    <div class="file-btn"><i
+                                            class="icofont-upload-alt"></i>
+                                        Upload a file</div>
+                                    <input type="file">
+                                </div>
+                            </div>
+                            <!-- item name input -->
+                            <div
+                                class="form-floating item-name-field mb-3">
+                                <input type="text" class="form-control"
+                                    id="itemNameInput"
+                                    placeholder="Item Name">
+                                <label for="itemNameInput">Item
+                                    Name</label>
+                            </div>
+                            <!-- item-description -->
+                            <div
+                                class="form-floating item-desc-field mb-30">
+                                <textarea class="form-control"
+                                    placeholder="Item Description"
+                                    id="itemDesc"></textarea>
+                                <label for="itemDesc">Item
+                                    Description</label>
+                            </div>
+                            
+                            <!-- item price -->
+                            <div class="item-price-field mb-3">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <select class="form-select"
+                                                id="selectCrypto"
+                                                aria-label="Floating label select">
+                                                <option selected>
+                                                    Ethereum
+                                                </option>
+                                                <option value="1">
+                                                    BitCoin
+                                                </option>
+                                                <option value="2">Dollar
+                                                </option>
+                                                <option value="3">Pound
+                                                </option>
+                                            </select>
+                                            <label
+                                                for="selectCrypto">Select
+                                                Currency</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text"
+                                                class="form-control"
+                                                id="itemPriceInput"
+                                                placeholder="Item Price">
+                                            <label
+                                                for="itemPriceInput">Item
+                                                Price</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Royalites, Size & copy -->
+                            <div class="item-price-field mb-5">
+                                <div
+                                    class="row g-3 justify-content-center">
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="form-floating">
+                                            <input type="text"
+                                                class="form-control"
+                                                id="royalityInput"
+                                                placeholder="Royalities">
+                                            <label
+                                                for="royalityInput">Royalities</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="form-floating">
+                                            <input type="text"
+                                                class="form-control"
+                                                id="sizeInput"
+                                                placeholder="Size">
+                                            <label for="sizeInput">Size
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="form-floating">
+                                            <input type="text"
+                                                class="form-control"
+                                                id="itemNumbersInput"
+                                                placeholder="Number of Copies">
+                                            <label
+                                                for="itemNumbersInput">Number
+                                                of Copies</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- submit button -->
+                            <div class="submit-btn-field text-center">
+                                <button type="submit">Create
+                                    Item</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+   
+  
+<br><br><br><br><br><br>
+ <!-- ===============//footer section start here \\================= -->
+ <footer class="footer-section">
+  <div class="footer-top" style="{% static 'assets/images/footer/bg.jpg' %}">
+      <div class="footer-newsletter">
+          <div class="container">
+              <div class="row g-4 align-items-center justify-content-center">
+                  <div class="col-lg-6">
+                      <div class="newsletter-part">
+                          <div class="ft-header">
+                              <h4>Get The Latest Rarible Updates</h4>
+                          </div>
+                          <form action="#">
+                              <input type="email" placeholder="Your Mail Address">
+                              <button type="submit"> Subscrib now</button>
+                          </form>
+                      </div>
+                  </div>
+                  <div class="col-lg-6">
+                      <div class="social-part ps-lg-5">
+                          <div class="ft-header">
+                              <h4>Join the Community</h4>
+                          </div>
+                          <ul class="social-list d-flex flex-wrap align-items-center mb-0">
+                              <li class="social-link"><a href="#"><i class="icofont-twitter"></i></a></li>
+                              <li class="social-link"><a href="#"><i class="icofont-twitch"></i></a></li>
+                              <li class="social-link"><a href="#"><i class="icofont-reddit"></i></a></li>
+                              <li class="social-link"><a href="#"><i class="icofont-instagram"></i></a></li>
+                              <li class="social-link"><a href="#"><i class="icofont-dribble"></i></a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+      </div>
+      <div class="footer-links padding-top padding-bottom">
+          <div class="container">
+              <div class="row g-5 row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-5">
+                  <div class="col">
+                      <div class="footer-link-item">
+                          <h5>About</h5>
+                          <ul class="footer-link-list">
+                              <li><a href="#" class="footer-link">Explore</a></li>
+                              <li><a href="#" class="footer-link">How it works</a></li>
+                              <li><a href="#" class="footer-link">Support</a></li>
+                              <li><a href="#" class="footer-link">Become a partner</a></li>
+
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="col">
+                      <div class="footer-link-item">
+                          <h5>NFT Marketplace</h5>
+                          <ul class="footer-link-list">
+                              <li><a href="#" class="footer-link">Sell your assets</a></li>
+                              <li><a href="#" class="footer-link">FAQ</a></li>
+                              <li><a href="#" class="footer-link">Support</a></li>
+                              <li><a href="#" class="footer-link">Privacy/Policy</a></li>
+                              <li><a href="#" class="footer-link">Your purchases</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="col">
+                      <div class="footer-link-item">
+                          <h5>Company</h5>
+                          <ul class="footer-link-list">
+                              <li><a href="#" class="footer-link">About</a></li>
+                              <li><a href="#" class="footer-link">Mission & Team</a></li>
+                              <li><a href="#" class="footer-link">Our Blog</a></li>
+                              <li><a href="#" class="footer-link">Services</a></li>
+                              <li><a href="#" class="footer-link">We're Hiring</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="col">
+                      <div class="footer-link-item">
+                          <h5>NFT Marketplace</h5>
+                          <ul class="footer-link-list">
+                              <li><a href="#" class="footer-link">Sell your assets</a></li>
+                              <li><a href="#" class="footer-link">FAQ</a></li>
+                              <li><a href="#" class="footer-link">Support</a></li>
+                              <li><a href="#" class="footer-link">Privacy/Policy</a></li>
+                              <li><a href="#" class="footer-link">Your purchases</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="col">
+                      <div class="footer-link-item">
+                          <h5>Comunity</h5>
+                          <ul class="footer-link-list">
+                              <li><a href="#" class="footer-link">NFT Token</a></li>
+                              <li><a href="#" class="footer-link">Discusion</a></li>
+                              <li><a href="#" class="footer-link">Voting</a></li>
+                              <li><a href="#" class="footer-link">Suggest Feature</a></li>
+                              <li><a href="#" class="footer-link">Language</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="footer-bottom">
+      <div class="container">
+          <p class="text-center py-4 mb-0">All rights reserved &copy; Enftomark || Design By: <a
+                  href="https://themeforest.net/user/codexcoder">Hamza Bastor and Aymen Maski</a>
+          </p>
+      </div>
+  </div>
+</footer>
+<!-- ===============//footer section end here \\================= -->
+
+
+
+<!-- scrollToTop start here -->
+<a href="#" class="scrollToTop"><i class="icofont-stylish-up"></i></a>
+<!-- scrollToTop ending here -->
+
+    
+
+
+    
+
+   
+</body>
+
+</html>

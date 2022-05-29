@@ -45,4 +45,8 @@ urlpatterns = [
     path('edit_product/<int:myid>/', views.edit_product, name="edit_product"),
     path('update_product/<int:myid>/',
          views.update_product, name="update_product"),
+    path('nfts/', views.nfts),
+    path('add_nft', views.add_nft, name="add_nft"),
+    path('nfts/', views.nfts),
+    path('profils/', views.profil),
 ]
