@@ -202,7 +202,7 @@ def add_nft(request):
     return render(request, 'nft/nfts.html', {})
 
 
-# create ViewSet clas
+# create ViewSet class
 class ProductViewSet(viewsets.ModelViewSet):
 
     queryset = Product.objects.all()
