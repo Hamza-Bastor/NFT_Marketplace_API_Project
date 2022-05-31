@@ -41,7 +41,7 @@
         <p class="alert alert-success mt-3">{{message}}</p>
         {% endfor %}
      </div>
-
+<!--Products form-->
      {% if sel_product %}
      <form class="form" method="POST" action="{% url 'update_product' sel_product.id %}">
       {% csrf_token %}

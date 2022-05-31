@@ -43,6 +43,7 @@
      </div>
 <br><br><br>
      {% if sel_account %}
+     <!--Users form-->
      <form class="form" method="POST" action="{% url 'update_user' sel_account.id %}">
       {% csrf_token %}
       <div class="form-group">
