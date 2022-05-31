@@ -3,6 +3,8 @@ from pyexpat import model
 from rest_framework import serializers
 from nft.models import Account, Collection, Product
 
+# create classes that will manage the conversion between model and json
+
 
 class ProductSerializer(serializers.ModelSerializer):
 
