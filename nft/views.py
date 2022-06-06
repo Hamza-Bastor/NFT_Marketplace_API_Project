@@ -207,7 +207,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    filterset_fields = ['collection', 'owner']
+    filterset_fields = ['collection', 'owner']  # filterset
     search_fields = ['product_name']
 
 
